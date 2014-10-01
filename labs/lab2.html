@@ -1,1 +1,30 @@
-This is a lab.
+<html>
+<head>
+  <title>Lab 2</title>
+  <link href="http://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+</head>
+<body align="center">
+  <script type="text/javascript">
+
+    alert("Welcome to McDonald's!");
+    confirm("You sure you want to order food from us?");
+
+    alert("Just checking.");
+
+    document.write("<h3>Your order</h3>");
+
+    var done = false;
+    var message = "Select an item from our menu, and type it into the field. Case not sensitive!\n\n\tBurger\n\tSoda\n\nEnter Q to quit.";
+
+    while(!done)
+    {
+      input = prompt(message);
+      if(input.toUpperCase() === 'Q')
+        done = true;
+      else
+        document.write(input + "</br>");
+    }
+
+  </script>
+</body>
+</html>
