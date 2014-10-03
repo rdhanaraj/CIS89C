@@ -1,1 +1,146 @@
-This is a lab.
+<html>
+<head>
+  <link href="http://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/darkly/bootstrap.min.css" rel="stylesheet">
+  <title>Lab 3</title>
+
+  <style type="text/css">
+    tr {
+        border-color: white;
+        border-width: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" style="margin-top: 50px">
+
+    <h2>Travel Expenses: India '94</h2>
+
+  <script type="text/javascript">
+    var total = 0, moneyToSend = 1000;
+
+    var conversionRate = 61.61;
+
+    var hotelCost = 190;
+    var transportCost = 110;
+    var foodCost = 240;
+
+    var item1Cost = 45;
+    var item2Cost = 80;
+    var item3Cost = 30;
+    var item4Cost = 10;
+
+    var item1Count = 2;
+    var item2Count = 3;
+    var item3Count = 1;
+    var item4Count = 1;
+
+    var rupee = '\u20B9', dollar = '$';
+
+    /** TABLE START **/
+    document.write("<table class='table table-border table-hover'>");
+
+    document.write("<thead>");
+
+    document.write("<th>  </th>");
+    document.write("<th> Cost in Dollars ($)</th>");
+    document.write("<th> Cost in Rupees (" + rupee + ")</th>");
+
+    document.write("</thead>");
+
+    document.write("<tr>");
+
+    document.write("<td> Hotel </td>");
+    document.write("<td>$" + hotelCost +"</td>");
+    document.write("<td>\u20B9" + hotelCost * conversionRate +"</td>");
+
+    total += hotelCost;
+
+    document.write("</tr>");
+
+    document.write("<tr>");
+
+    document.write("<td> Transport </td>");
+    document.write("<td>$" + transportCost +"</td>");
+    document.write("<td>\u20B9" + transportCost * conversionRate +"</td>");
+
+    total += transportCost;
+
+    document.write("</tr>");
+
+    document.write("<tr>");
+
+    document.write("<td> Food </td>");
+    document.write("<td>$" + foodCost +"</td>");
+    document.write("<td>\u20B9" + foodCost * conversionRate +"</td>");
+
+    document.write("</tr>");
+
+    total += foodCost;
+
+    document.write("<tr>");
+
+    document.write("<td> Sarees </td>");
+    document.write("<td>$" + item1Cost * item1Count +"</td>");
+    document.write("<td>\u20B9" + item1Cost * item1Count * conversionRate +"</td>");
+
+    document.write("</tr>");
+
+    total += item1Cost * item1Count;
+
+    document.write("<tr>");
+
+    document.write("<td> Jewels </td>");
+    document.write("<td>$" + item2Cost * item2Count +"</td>");
+    document.write("<td>\u20B9" + item2Cost * item2Count * conversionRate +"</td>");
+
+    document.write("</tr>");
+
+    total += item2Cost * item2Count;
+
+    document.write("<tr>");
+
+    document.write("<td> Perfume </td>");
+    document.write("<td>$" + item3Cost * item3Count +"</td>");
+    document.write("<td>\u20B9" + item3Cost * item3Count * conversionRate +"</td>");
+
+    document.write("</tr>");
+
+    total += item3Cost * item3Count;
+
+    document.write("<tr>");
+
+    document.write("<td> Balloon animals </td>");
+    document.write("<td>$" + item4Cost * item4Count +"</td>");
+    document.write("<td>\u20B9" + item4Cost * item4Count * conversionRate +"</td>");
+
+    document.write("</tr>");
+
+    total += item4Cost * item4Count;
+
+    document.write("<tr>");
+
+    document.write("<td> Total </td>");
+    document.write("<td>$" + total +"</td>");
+    document.write("<td>\u20B9" + total * conversionRate +"</td>");
+
+    document.write("</tr>");
+
+    document.write("<tr>");
+
+    document.write("<td> Balance </td>");
+    document.write("<td>$" + (1000 - total) +"</td>");
+    document.write("<td>\u20B9" + (1000 - total) * conversionRate +"</td>");
+
+    document.write("</tr>");
+
+    document.write("</table>");
+
+    /** TABLE END **/
+
+  </script>
+
+  </div>
+
+</body>
+</html>
