@@ -1,1 +1,96 @@
-This is a lab.
+<html>
+<head>
+  <!-- <link href='http://fonts.googleapis.com/css?family=Oxygen+Mono' rel='stylesheet' type='text/css'> -->
+  <title>Lab 4</title>
+
+  <style type="text/css">
+    body, p {
+      background-color: #34495e;
+      font-family: "Oxygen Mono", sans-serif;
+      color: black;
+    }
+
+    .well {
+      background-color: white;
+      border-width: 5px;
+      padding: 15px;
+
+      margin-left: 20%; 
+      margin-right: 20%;
+      margin-top: 2%;
+      margin-bottom: 10px;
+
+      font-color: black;
+    }
+
+    h1 {
+      color: white;
+    }
+
+    .ans {
+      font-size: 40px;
+      background-color: white;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body align="center">
+  <h1 style="margin-top: 30px;">This Month's Stats</h1>
+
+  <hr style="margin-left: 20%; margin-right: 20%;">
+
+    <script type="text/javascript">
+      input();
+
+      function mileage (miles, gallons) {
+        return miles / gallons;
+      }
+
+      function tip (total, percent) {
+        return total * percent / 100;
+      }
+
+      function cost (buckets, cost_per) {
+        return buckets * cost_per;
+      }
+
+      function input () {
+        var miles = parseFloat(prompt("Input miles traveled."));
+        var gal = parseFloat(prompt("Input gallons used."));
+        var mpg = mileage(miles, gal);
+
+        document.write("<div class='well'>")
+        document.write(miles + " mi. / " + gal + " gal. <br>");
+        document.write("<p class='ans'>" + mpg + "</p>");
+        document.write("miles per gallon");
+
+        document.write("</div>");
+
+        var bill = parseFloat(prompt("Input total spent."));
+        var percent = parseFloat(prompt("Input percent for tip."));
+        var amt = tip(bill, percent);
+
+        document.write("<div class='well'>")
+        document.write("$" + bill + " x " + percent + "% <br>");
+        document.write("<p class='ans'>" + amt + "</p>");
+        document.write("dollars");
+
+        document.write("</div>");
+
+        var c = parseFloat(prompt("Input cost per bucket."));
+        var buckets = parseFloat(prompt("Input number of buckets."));
+        var total = cost(buckets, c);
+
+        document.write("<div class='well'>")
+        document.write("$" + c + " x " + buckets + " ct. <br>");
+        document.write("<p class='ans'>" + total + "</p>");
+        document.write("dollars");
+
+        document.write("</div>");
+
+      }
+
+    </script>
+</body>
+</html>
