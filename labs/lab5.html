@@ -1,1 +1,110 @@
-This is a lab.
+<html>
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Oxygen+Mono' rel='stylesheet' type='text/css'>
+  <title>Lab 5</title>
+
+  <style type="text/css">
+    body, p {
+      background-color: #34495e;
+      font-family: "Oxygen Mono", sans-serif;
+      color: black;
+    }
+
+    .well {
+      background-color: white;
+      border-width: 5px;
+      padding: 15px;
+      margin-top: 2%;
+      margin-bottom: 10px;
+
+      font-color: black;
+    }
+
+    h1 {
+      color: white;
+    }
+
+    .ans {
+      font-size: 40px;
+      background-color: white;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .col-1 {
+      float: left;
+      margin: 5px;
+      width: 48%;
+    }
+
+    .col-2 {
+      float: left;
+      width: 48%;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body style="margin-left: 20%; margin-right: 20%;">
+
+  <h1 style="margin-top: 30px; text-align: center;">Available Movies</h1>
+
+  <hr><br>
+
+  <script type="text/javascript">
+
+    // Constructor for movie instances
+    function movie(genre, title, rating, price) {
+
+      this.genre = genre;
+      this.title = title;
+      this.rating = rating;
+      this.price = price;
+
+      this.display = display;
+    }
+
+    // Creates a column of movie attributes
+    function display() {
+
+      document.write("<div class='well'>")
+      document.write("title");
+      document.write("<p class='ans'>" + this.title + "</p>");
+
+      document.write("</div>");
+
+      document.write("<div class='well'>")
+      document.write("genre");
+      document.write("<p class='ans'>" + this.genre + "</p>");
+
+      document.write("</div>");
+
+      document.write("<div class='well'>")
+      document.write("rating");
+      document.write("<p class='ans'>" + this.rating + "</p>");
+
+      document.write("</div>");
+
+      document.write("<div class='well'>")
+      document.write("price");
+      document.write("<p class='ans'>$" + this.price + "</p>");
+
+      document.write("</div>");
+
+      document.write("</div>");
+
+    }
+
+    // Create & display two movies
+    document.write("<div class='col-1'>");
+    movie1 = new movie("Action", "Thor", "PG", 11.99);
+    movie1.display();
+    document.write("</div>");
+
+    document.write("<div class='col-2'>");
+    movie2 = new movie("Family", "Book of Life", "PG", 7.99);
+    movie2.display();
+    document.write("</div>");
+
+  </script>
+</body>
+</html>
