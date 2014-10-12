@@ -1,0 +1,72 @@
+body {
+  margin: 0px;
+  font-family: "Oxygen Mono", sans-serif;
+  font-size: 20px;
+  margin: 5% 15% 5%;
+}
+
+.nav {
+  height: 10%;
+  /*background-color: #95a5a6;*/
+  padding: .5% 1% .5%;
+}
+
+.nav a {
+  text-decoration: none;
+}
+
+.text-right {
+  float: right;
+}
+
+.text-right a {
+  text-decoration: none;
+}
+.text-right a:hover {
+}
+
+
+#brand {
+  font-size: 24px;
+  color: black;
+  cursor: default;
+}
+
+.movies {
+  width: 90%;
+  margin: 3% 5% 0%;
+
+  border-bottom-width: 5px;
+  border-bottom-color: black;
+}
+
+.img {
+  float: left;
+  width: 25%;
+}
+
+.attr {
+  float: right;
+  width: 75%;
+}
+
+h4 {
+  font-size: 25px;
+  margin-bottom: 4px;
+}
+
+strong {
+  text-decoration: bold;
+  text-decoration: underline;
+}
+
+p {
+  margin: 5px 0px;
+}
+
+.hero-unit {
+  font-size: 38px;
+  text-align: center;
+
+  margin: 5%;
+}
