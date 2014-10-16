@@ -1,1 +1,152 @@
-This is a lab.
+<html>
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Oxygen+Mono' rel='stylesheet' type='text/css'>
+  <title>Lab 6</title>
+
+  <style type="text/css">
+    body {
+      font-family: "Oxygen Mono";
+      background-color: black;
+      color: black;
+      margin: 0% 30% 0%;
+    }
+
+    .well {
+      background-color: blue;
+      border-width: 5px;
+      padding: 15px;
+      margin-top: 2%;
+      margin-bottom: 10px;
+
+      color: white;
+      text-align: center;
+    }
+
+    .well-2 {
+      background-color: red;
+      border-width: 5px;
+      padding: 15px;
+      margin-top: 2%;
+      margin-bottom: 10px;
+
+      font-color: black;
+      text-align: center;
+    }
+
+    h1 {
+      color: white;
+    }
+
+    .ans {
+      font-size: 40px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .prompt {
+      color: white;
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  </style>
+
+</head>
+<body>
+
+  <h1 style="margin-top: 30px; text-align: center;">Movie Inventory</h1>
+
+  <hr>
+
+  <script type="text/javascript">
+
+    function movie(genre, title, rating, price) {
+
+      this.genre = genre;
+      this.title = title;
+      this.rating = rating;
+      this.price = price;
+
+      this.display = display;
+    }
+
+    function display() {
+
+      document.write("<div class='well title-well'>")
+      document.write("title");
+      document.write("<p class='ans title-ans'>" + this.title + "</p>");
+
+      document.write("genre");
+      document.write("<p class='ans'>" + this.genre + "</p>");
+
+      document.write("rating");
+      document.write("<p class='ans'>" + this.rating + "</p>");
+
+      document.write("price");
+      document.write("<p class='ans'>$" + this.price + "</p>");
+
+      document.write("</div>");
+
+    }
+
+    function write(message) {
+      document.write("<div class='prompt well-2'>");
+      document.write(message);
+      document.write("</div>")
+    }
+
+    // Create & display two movies
+    // movie1 = new movie("Action", "Thor", "PG", 11.99);
+    // movie1.display();
+
+    // movie2 = new movie("Family", "Book of Life", "PG", 7.99);
+    // movie2.display();
+
+    inventory = [];
+    inventory.displayAll = function() {
+
+      write("Number of movies in inventory: <b>" + inventory.length + "</b>");
+
+      inventory.forEach(function(movie, index, inventory) {
+        movie.display();
+      });
+    }
+
+    movie1 = new movie("Action", "Thor", "PG-13", 11.99);
+    movie2 = new movie("Family", "Book of Life", "PG", 7.99);
+    movie3 = new movie("Comedy", "Men In Black", "PG-13", 7.99);
+    inventory.push(movie1, movie2, movie3);
+
+    inventory.displayAll();
+
+    write("First popped movie!");
+    popped1 = inventory.pop();
+    popped1.display();
+    inventory.displayAll();
+
+    write("Second popped movie!");
+    popped2 = inventory.pop();
+    popped2.display();
+    inventory.displayAll();
+
+    write("Unshifted the last popped movie!");
+    inventory.unshift(popped2);
+    inventory.displayAll();
+
+    write("Another popped movie, after unshifting!");
+    popped3 = inventory.pop();
+    popped3.display();
+    inventory.displayAll();
+
+    write("Push the first popped movie!");
+    inventory.push(popped1);
+    inventory.displayAll();
+
+    write("One final shifted movie!");
+    shifted = inventory.shift(popped3);
+    shifted.display();
+    inventory.displayAll();
+  </script>
+
+</body>
+</html>
