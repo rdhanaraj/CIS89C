@@ -1,1 +1,158 @@
-This is a lab.
+<html>
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Oxygen+Mono' rel='stylesheet' type='text/css'>
+  <title>Lab 6</title>
+
+  <style type="text/css">
+    body {
+      font-family: "Oxygen Mono";
+      background-color: black;
+      color: black;
+      margin: 0% 10% 0%;
+      text-align: center;
+    }
+
+    .well {
+      background-color: blue;
+      border-width: 5px;
+      padding: 15px;
+      margin-top: 2%;
+      margin-bottom: 10px;
+
+      color: white;
+      text-align: center;
+    }
+
+    .well-2 {
+      background-color: red;
+      border-width: 5px;
+      padding: 15px;
+      margin-top: 2%;
+      margin-bottom: 10px;
+
+      font-color: black;
+      text-align: center;
+    }
+
+    h1 {
+      color: white;
+    }
+
+    .ans {
+      font-size: 40px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .prompt {
+      color: white;
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .col-1 {
+      width: 30%;
+      float: left;
+      margin-left: 1.5%;
+      margin-right: 1.5%;
+    }
+
+    .col-2 {
+      width: 30%;
+      float: left;
+      margin-left: 1.5%;
+      margin-right: 1.5%;
+    }
+
+    .col-3 {
+      width: 30%;
+      float: left;
+      margin-left: 1.5%;
+      margin-right: 1.5%;
+    }
+  </style>
+
+</head>
+<body>
+
+  <h1 style="margin-top: 30px; text-align: center;">Movie Inventory</h1>
+
+  <hr>
+
+  <script type="text/javascript">
+
+    function movie(title, rating, price) {
+
+      this.title = title;
+      this.rating = rating;
+      this.price = price;
+
+      this.display = display;
+    }
+
+    function display() {
+
+      document.write("<div class='well title-well'>")
+      document.write("title");
+      document.write("<p class='ans title-ans'>" + this.title + "</p>");
+
+      document.write("rating");
+      document.write("<p class='ans'>" + this.rating + "</p>");
+
+      document.write("price");
+      document.write("<p class='ans'>$" + this.price + "</p>");
+
+      document.write("</div>");
+
+    }
+
+    function write(message) {
+      document.write("<div class='prompt well-2'>");
+      document.write(message);
+      document.write("</div>")
+    }
+
+    comedy = [], action = [], drama = [];
+    inventory = [comedy, action, drama];
+
+    comedy.title = "Comedy", action.title = "Action", drama.title = "Drama";
+    inventory.displayAll = function() {
+
+      
+      for (var i = 0; i < inventory.length; i++) {
+
+        document.writeln("<div class='col-" + (i + 1) +"'>");
+
+        genre = inventory[i];
+        write(genre.title);
+
+        for (var j = 0; j < genre.length; j++) {
+          genre[j].display();
+        };
+
+        document.writeln("</div>");
+      };
+    }
+
+    write("Number of genres in inventory: <b>" + inventory.length + "</b>");
+
+    movie1 = new movie("Hotel Trans.", "PG", 14.99);
+    movie2 = new movie("Ted", "R", 11.99);
+    movie3 = new movie("Madagascar", "PG", 12.99);
+    comedy.push(movie1, movie2, movie3);
+
+    movie4 = new movie("The Avengers", "PG-13", 12.99);
+    movie5 = new movie("Men In Black 3", "PG-13", 10.99);
+    movie6 = new movie("The Hunger Games", "PG-13", 11.99);
+    action.push(movie4, movie5, movie6);
+
+    movie7 = new movie("Taken 2", "PG-13", 13.99);
+    movie8 = new movie("The Untouchables", "R", 12.99);
+    movie9 = new movie("Rock of Ages", "R", 11.99);
+    drama.push(movie7, movie8, movie9);
+
+    inventory.displayAll();
+  </script>
+</body>
+</html>
