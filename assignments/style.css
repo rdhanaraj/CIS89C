@@ -68,5 +68,23 @@ p {
   font-size: 38px;
   text-align: center;
 
-  margin: 5%;
+  margin: 2% 5% 5%;
+}
+
+.col {
+  width: 33%;
+  float: left;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+}
+
+img {
+  width: 50px;
+}
+
+tr {
+  height: 100px;
 }
