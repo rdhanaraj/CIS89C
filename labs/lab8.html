@@ -1,1 +1,34 @@
-This is a lab.
+<html>
+<head>
+  <title>Lab 8</title>
+</head>
+<body>
+  <script type="text/javascript">
+
+    function movie(title, actor) {
+      this.title = title;
+      this.actor = actor;
+    }
+
+    movie1 = new movie("http://www.imdb.com/title/tt1798709/", "http://www.imdb.com/name/nm0001618/?ref_=tt_ov_st");
+
+    var mainWindow = window.open("", "", "height=500,width=500,location,menubar,toolbar,status,resizable");
+    mainWindow.document.write("Her (2013): A lonely writer develops an unlikely relationship with his newly purchased operating system that's designed to meet his every need." + "<br><br>");
+    
+    mainWindow.document.write("<a href= 'javascript: var movieWindow = window.open(opener.movie1.title,\"movieWindow\",\"height=500, width=500,scrollbars,resizable\");'>Open movie window</a> <br>");
+
+
+    mainWindow.document.write("<script>" + 
+      "function createActorWindow() { " + 
+        "actorWindow = window.open('','actorwin','height=500,width=500, resizable');" + 
+        "actorWindow.document.write('Joaquin Phoenix played the lead role in the movie, Her.<br>'); actorWindow.document.write('<br><a href=\"" +
+        "javascript:opener.location = opener.opener.movie1.actor;\">Learn more</a>'); }<\/script>");
+
+    mainWindow.document.write("<a href='javascript:createActorWindow()'>Open actor window<br><a>"); 
+ 
+    mainWindow.document.write("<br><a href='javascript:window.close();'>Close main window</a><br>");
+    mainWindow.document.write("<a href='javascript:movieWindow.close();'>Close movie window</a><br>");
+    mainWindow.document.write("<a href='javascript:actorWindow.close();'>Close actor window</a>");
+  </script>
+</body>
+</html>
