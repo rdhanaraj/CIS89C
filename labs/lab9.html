@@ -1,1 +1,34 @@
-This is a lab.
+<html>
+<head>
+  <title>Lab 9</title>
+</head>
+<body style="align: center;">
+
+  <script type="text/javascript">
+    popup = window.open("","","height=600,width=1000,resizable");
+
+    //Get the screen size
+    popup.document.write("The screen size is <strong>" + screen.width + "px by " + screen.height + " px<br><br>");
+
+    function resize() {
+      popup.resizeTo(screen.width / 3, screen.height);
+    }
+
+    setTimeout(resize, 1500);
+
+    function display(){
+      popup.document.write("PROPERTIES<br>");
+      for(i in popup.navigator) {
+        popup.document.write(i + " :  <strong>" + popup.navigator[i]+"</strong><br>");
+      }
+      return 0;
+    }
+    setTimeout(display, 2000);
+
+    //Use background color and text color
+    myWin.document.bgColor = "grey";
+    myWin.document.fgColor = "white";
+  </script>
+
+</body>
+</html>
