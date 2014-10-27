@@ -1,4 +1,4 @@
-body {
+body, ul, li {
   margin: 0px;
   font-family: "Oxygen Mono", sans-serif;
   font-size: 20px;
@@ -29,7 +29,7 @@ body {
 #brand {
   font-size: 24px;
   color: black;
-  cursor: default;
+  cursor: pointer;
 }
 
 .movies {
@@ -87,4 +87,8 @@ img {
 
 tr {
   height: 100px;
+}
+
+#nig {
+  margin-bottom: 20px;
 }
