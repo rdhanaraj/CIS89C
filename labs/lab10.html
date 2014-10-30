@@ -1,1 +1,60 @@
-This is a lab.
+<html>
+<head>
+  <title>Lab 10</title>
+
+  <style type="text/css">
+    body {
+      margin: 5% 15% 0%;
+      color: white;
+      font-family: Georgia, sans-serif;
+      font-size: 22px;
+    }
+
+    .bg-green {
+      background-color: #2ecc71;
+      padding: 15px;
+    }
+
+    .bg-turquoise {
+      background-color: #1abc9c;
+      padding: 15px;
+    }
+
+    h1 {
+      background-color: #f39c12;
+      padding: 15px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-green">
+    I like to read.
+  </div>
+
+  <script type="text/javascript">
+    var book1 = prompt("What was a book you read?");
+
+    var newDiv = document.createElement("div");
+    newDiv.innerHTML = "On Monday, I read <i>" + book1 + "</i>.";
+    newDiv.className = "bg-turquoise";
+
+    var currentDiv = document.getElementsByTagName("div")[0];
+
+    document.body.insertBefore(newDiv, currentDiv);
+
+    var book2 = prompt("What is your favorite book?");
+
+    var h = document.createElement("h1");
+    var someText = document.createTextNode("Your favorite book is " + book2  + ".");
+    h.appendChild(someText);
+    document.body.appendChild(h);
+
+    var anotherDiv = document.createElement("div");
+    anotherDiv.className = "bg-turquoise";
+    anotherDiv.innerHTML = "This is the best book ever.<hr><img src='http://smartgoalsneverfail.files.wordpress.com/2013/08/happinessproject.jpg' width='150px'></img>";
+    document.body.appendChild(anotherDiv);
+
+  </script>
+</body>
+</html>
