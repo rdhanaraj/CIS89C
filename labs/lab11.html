@@ -1,1 +1,64 @@
-This is a lab.
+<html>
+<head>
+  <title>Lab 10</title>
+
+  <style type="text/css">
+    body {
+      margin: 5% 15% 0%;
+      color: white;
+      font-family: Georgia, sans-serif;
+      font-size: 22px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin: 0px;
+      padding: 0px;
+      font-weight: 1;
+    }
+
+    .bg {
+      margin-top: 5px;
+      padding: 15px;
+    }
+
+    #bg-green {
+      background-color: #2ecc71;
+      border: solid #2ecc71 3px;
+      cursor: pointer;
+    }
+
+    .bg-orange {
+      background-color: #f39c12;
+      border: solid black 3px;
+    }
+  </style>
+</head>
+<body onload="init();">
+  <div class="bg" id="bg-green">
+    <h1>Add a movie!</h1>
+  </div>
+
+  <script type="text/javascript">
+  
+    function init () {
+      currentDiv = document.getElementById("bg-green");
+
+      currentDiv.onclick = function (event) {
+
+        movie = prompt("Enter the title of the movie.");
+
+        var newDiv = document.createElement("div");
+        newDiv.innerHTML = movie;
+        newDiv.className = "bg bg-orange";
+
+        var parentNode = currentDiv.parentNode;
+
+        parentNode.insertBefore(newDiv, currentDiv);
+      };
+    }
+
+  </script>
+
+</body>
+</html>
