@@ -9,7 +9,7 @@ function movie(title, rating, price, img_url, description) {
 }
 
 function display() {
-  document.write("<td><img src='" + this.img_url + "'></img>");
+  document.write("<td><img class='movie-img' src='" + this.img_url + "'></img>");
   document.write("<td>" + this.title + "</td>");
   document.write("<td>" + this.rating + "</td>");
   document.write("<td>$" + this.price + "</td>");

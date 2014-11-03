@@ -7,7 +7,6 @@ body, ul, li {
 
 .nav {
   height: 10%;
-  /*background-color: #95a5a6;*/
   padding: .5% 1% .5%;
 }
 
@@ -81,7 +80,7 @@ table {
   width: 100%;
 }
 
-img {
+.movie-img {
   width: 50px;
 }
 
@@ -91,4 +90,22 @@ tr {
 
 #nig {
   margin-bottom: 20px;
+}
+
+#bg-turquoise {
+  background-color: #e67e22;
+  padding: 5px;
+  font-size: 22px;
+  margin: 0% 1% 0%;
+  color: white;
+
+  width: 200px;
+  text-align: center;
+  font-weight: 1.5em;
+
+  position: absolute;
+}
+
+#div-thing {
+  width: 190px;
 }
