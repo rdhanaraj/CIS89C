@@ -1,1 +1,80 @@
-This is a lab.
+<html>
+<head>
+  <title>Lab 12</title>
+  <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+
+  <style type="text/css">
+    body {
+      margin: 30px 15% 20px;
+      color: white;
+      font-family: "Lora", Georgia, sans-serif;
+      font-size: 20px;
+      background-color: black;
+    }
+
+    .bg-green {
+      background-color: #2ecc71;
+      padding: 12px;
+    }
+
+    .bg-turquoise {
+      background-color: #1abc9c;
+      padding: 12px;
+      margin-bottom: 15px;
+    }
+
+    .bg-orange {
+      background-color: #f39c12;
+      padding: 12px;
+      margin-bottom: 30px;
+    }
+
+    strong {
+      font-size: 26px;
+    }
+  </style>
+</head>
+<body onload="init()">
+
+  <script type="text/javascript">
+    // function called on loading of page
+    function init() {
+      test.text = prompt("Enter some text to be matched against!");
+
+      header = document.createElement("div");
+      header.className = "bg-orange";
+      header.innerHTML = "String: <strong>\"" + test.text + "\"</strong>";
+
+      document.body.appendChild(header);
+
+      tests = [new test(/\w/), new test(/[^0-9]/), new test(/[A-Z][a-z]+\s/), new test(/#\d{5}\.\d/)];
+
+      tests.forEach(function(test) {
+        test.display();
+      });
+    }
+
+    // constructor for class test
+    function test(regex) {
+
+      this.regex = regex;
+
+      this.regexDiv = document.createElement("div");
+      this.regexDiv.className = "bg-green";
+      this.regexDiv.innerHTML = "Regex: <strong>" + this.regex + "</strong>";
+
+      this.resultDiv = document.createElement("div");
+      this.resultDiv.className = "bg-turquoise";
+      this.resultDiv.innerHTML = "Result: <strong>" + (test.text.match(regex) ? "true" : "false") + "</strong>";
+
+      this.display = display;
+    }
+
+    // display method for class test
+    function display() {
+      document.body.appendChild(this.regexDiv);
+      document.body.appendChild(this.resultDiv);
+    }
+  </script>
+</body>
+</html>
