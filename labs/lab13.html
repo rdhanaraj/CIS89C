@@ -1,1 +1,80 @@
-This is a lab.
+<html>
+<head>
+  <title>Lab 13</title>
+  <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+
+  <style type="text/css">
+    body {
+      margin: 30px 15% 20px;
+      color: white;
+      font-family: "Lora", Georgia, sans-serif;
+      font-size: 26px;
+    }
+
+    .bg-turquoise {
+      background-color: #1abc9c;
+      padding: 12px;
+      margin-bottom: 30px;
+    }
+
+    .bg-orange {
+      background-color: #f39c12;
+      padding: 12px;
+      margin-bottom: 15px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="bg-turquoise"><strong>My Age</strong></div>
+
+  <script type="text/javascript">
+
+    months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    month = prompt("What month were you born in?");
+    day = prompt("What day were you born on?");
+    year = prompt("What year were you born in?");
+
+    birthDate = new Date(year, month, day);
+    currentDate = new Date();
+ 
+    write("Today is " + currentDate.toLocaleString() + ".");
+    write("I was born on " + months[month] + " " + day + ", " + year + " (" + month + "/" + day + "/" + year + ").");
+
+    currentAge = Math.floor( (currentDate - birthDate) / 31536000000 );
+    nextBirthday = new Date(parseInt(year) + currentAge, month, day);
+
+    if(nextBirthday - currentDate < 0)
+      nextBirthday.setYear(parseInt(year) + currentAge + 1);
+
+    timeLeft = split(nextBirthday - currentDate);
+
+    write("I am " + currentAge + " years old and will turn " + (currentAge + 1) + " in " + timeLeft[0] + " days, " + timeLeft[1] + " hours, " + timeLeft[2] + " minutes, and " + timeLeft[3] + " seconds.");
+
+    timeLived = split(currentDate - birthDate);
+
+    write("I have been alive for " + timeLived[0] + " days, " + timeLived[1] + " hours, " + timeLived[2] + " minutes, and " + timeLived[3] + " seconds.");
+
+    function write(message) {
+
+      newDiv = document.createElement("div");
+      newDiv.className = "bg-orange";
+      newDiv.innerHTML = message;
+
+      document.body.appendChild(newDiv);
+    }
+
+    function split(milli) {
+      days = Math.floor(milli / 1000 / 60 / 60 / 24);
+      hours = Math.floor((milli - days * 1000 * 60 * 60 * 24) / 1000 / 60 / 60);
+      minutes = Math.floor((milli - days * 1000 * 60 * 60 * 24 - hours * 1000 * 60 * 60) / 1000 / 60);
+      seconds = Math.floor((milli - days * 1000 * 60 * 60 * 24 - hours * 1000 * 60 * 60 - minutes * 1000 * 60) / 1000);
+
+      return [days, hours, minutes, seconds];
+    }
+
+  </script>
+</body>
+</html>
