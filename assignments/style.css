@@ -14,14 +14,15 @@ body, ul, li {
   text-decoration: none;
 }
 
+.text-center {
+  text-align: center;
+}
 .text-right {
   float: right;
 }
 
 .text-right a {
   text-decoration: none;
-}
-.text-right a:hover {
 }
 
 

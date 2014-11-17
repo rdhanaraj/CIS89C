@@ -7,6 +7,28 @@
 
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="script.js"></script>
+
+  <style>
+
+    * {
+      color: white;
+    }
+
+    #brand {
+      color: white;
+    }
+
+    th, td {
+      vertical-align: top;
+      border: none;
+      text-align: center;
+    }
+
+    th {
+      text-align: left;
+    }
+  </style>
+
 </head>
 <body>
   <div class="nav">
@@ -20,33 +42,23 @@
       <a href="contact.html">&nbsp;Contact</a>
     </span>
 
-
     <hr>
 
     <br><br><br>
 
-    <div class="hero-unit">
-      Welcome to our premier movie reviewing service!
+    <div id="clock"></div>
+    <div id="greeting" class="hero-unit">
     </div>
 
-    <div class="col">
-      <i class="fa fa-tachometer fa-5x"></i>
-      <h3>Quick</h3>
-    </div>
+    <div id="quote" class="text-center" style="margin-bottom: 50px"></div>
 
-    <div class="col">
-      <i class="fa fa-smile-o fa-5x"></i>
-
-      <h3>Simple</h3>
-    </div>
-
-    <div class="col">
-      <i class="fa fa-certificate fa-5x"></i>
-
-      <h3>Amazing</h3>
-    </div>
+    <hr><br>
+    <table id="calendar"></table>
 
     <br><br>
   </div>
+
+  <script src="index.js"></script>
+  
 </body>
 </html>
