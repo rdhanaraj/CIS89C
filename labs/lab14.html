@@ -1,1 +1,67 @@
-This is a lab.
+<html>
+<head>
+  <title>Lab 14</title>
+
+  <style type="text/css">
+    body {
+      margin: 30px 15% 20px;
+      color: white;
+      font-family: "Lora", Georgia, sans-serif;
+      font-size: 26px;
+    }
+
+    .bg-turquoise {
+      background-color: #1abc9c;
+      padding: 12px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .bg-orange {
+      padding: 12px;
+      margin-bottom: 15px;
+      text-align: center;
+      background-color: #1abc9c;
+
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+  </style>
+
+</head>
+<body>
+  <script type="text/javascript">
+
+    function Link(url, name) {
+      this.url = url;
+      this.name = name;
+
+      this.display = display;
+    }
+
+    function display() {
+
+      newDiv = document.createElement("div");
+      newDiv.className = "bg-orange";
+      newDiv.innerHTML = "<a href='" + this.url + "'>" + this.name + "</a>";
+
+      document.body.appendChild(newDiv);
+    }
+
+    links = [new Link("http://google.com", "Google"), new Link("http://fb.com", "Facebook"), new Link("http://twitter.com", "Twitter"), new Link("http://chs.fuhsd.org", "School"), new Link("http://spotify.com", "Spotify"), new Link("http://hshacks.com", "HSHacks"), new Link("http://tinovation.org", "Tinovation"), new Link("http://stanford.edu", "Stanford"), new Link("http://techcrunch.com", "Techcrunch"), new Link("http://rishi.io", "Personal"), new Link("http://amazon.com", "Amazon"), new Link("http://duelingnetwork.com", "Dueling Network")];
+
+    links[(new Date()).getMinutes() % 12].display();
+
+    window.setInterval(function() {
+
+      document.body.innerHTML = "";
+      links[(new Date()).getMinutes() % 12].display();
+    }, 1000 * 60);
+
+  </script>
+</body>
+</html>
