@@ -1,1 +1,46 @@
-This is a lab.
+<html>
+<head>
+  <title></title>
+
+  <style type="text/css">
+    body {
+      margin: 30px 15% 20px;
+      color: white;
+      font-family: "Lora", Georgia, sans-serif;
+      font-size: 26px;
+    }
+
+    .well {
+      padding: 12px;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body onload="init()">
+
+  <div class="well">Random color generator</div>
+  <div class="well" id="well"></div>
+
+  <script type="text/javascript">
+    function updateWell(message) {
+      well = document.getElementById("well");
+      well.innerHTML = message;
+    }
+
+    function updateBackground(color) {
+      document.body.style.backgroundColor = color;
+    }
+
+    function randomComponent() {
+      comp = (Math.floor(Math.random() * 255)).toString(16);
+      return (comp.length === 1) ? ("0" + comp) : comp;
+    }
+
+    function init() {
+      rgb = [randomComponent(), randomComponent(), randomComponent()];
+      updateBackground("#" + rgb[0] + rgb[1] + rgb[2]);
+      updateWell("Displaying color #<strong>" + rgb[0] + rgb[1] + rgb[2] + "</strong>");
+    }
+  </script>
+</body>
+</html>
