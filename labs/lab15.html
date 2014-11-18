@@ -32,7 +32,7 @@
     }
 
     function randomComponent() {
-      comp = (Math.floor(Math.random() * 255)).toString(16);
+      comp = (Math.floor(Math.random() * 256 + 1)).toString(16);
       return (comp.length === 1) ? ("0" + comp) : comp;
     }
 
