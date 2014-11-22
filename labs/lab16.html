@@ -1,1 +1,132 @@
-This is a lab.
+<html>
+<head>
+  <title>Lab 16: Calculator</title>
+
+  <link href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.0/readable/bootstrap.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+
+  <style type="text/css">
+    body {
+      margin: 10% 40% 10%;
+      font-family: "Lora", monospace;
+      font-size: 26px;
+    }
+
+    td {
+      margin: 0px;
+      text-align: center;
+    }
+
+    .form-control {
+      border: none;
+      font-size: 22px;
+    }
+
+    .btn {
+      font-family: "Lora", monospace;
+      border: 0px;
+      font-size: 24px;
+      margin: 0px;
+    }
+
+    input.form-control, input.form-control:focus, 
+    textarea.form-control, textarea.form-control:focus,
+    select.form-control, select.form-control:focus {
+      border-width: 2px;
+      box-shadow: none;
+       -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+       -moz-transition: none;
+       -webkit-transition: none;
+    }
+  </style>
+</head>
+<body>
+  <form name="calculator">
+    <table class="table">
+      <tr>
+        <td colspan="4"><input name="display" type="text" class="form-control"></td>
+      </tr>
+
+      <tr>
+        <td><button type="button" class="btn btn-default" onclick="operand(this.innerHTML)">1</button></td>
+        <td><button type="button" class="btn btn-default" onclick="operand(this.innerHTML)">2</button></td>
+        <td><button type="button" class="btn btn-default" onclick="operand(this.innerHTML)">3</button></td>
+        <td><button type="button" class="btn btn-default" onclick="operator(this.innerHTML)">+</button></td>
+      </tr>
+
+      <tr>
+        <td><button type="button" class="btn btn-default" onclick="operand(this.innerHTML)">4</button></td>
+        <td><button type="button" class="btn btn-default" onclick="operand(this.innerHTML)">5</button></td>
+        <td><button type="button" class="btn btn-default" onclick="operand(this.innerHTML)">6</button></td>
+        <td><button type="button" class="btn btn-default" onclick="operator(this.innerHTML)">-</button></td>
+      </tr>
+
+      <tr>
+        <td><button type="button" class="btn btn-default" onclick="operand(this.innerHTML)">7</button></td>
+        <td><button type="button" class="btn btn-default" onclick="operand(this.innerHTML)">8</button></td>
+        <td><button type="button" class="btn btn-default" onclick="operand(this.innerHTML)">9</button></td>
+        <td><button type="button" class="btn btn-default" onclick="operator(this.innerHTML)">x</button></td>
+      </tr>
+
+      <tr>
+        <td><button type="button" class="btn btn-default" onclick="empty()">C</button></td>
+        <td><button type="button" class="btn btn-default" onclick="operand(this.innerHTML)">0</button></td>
+        <td><button type="button" class="btn btn-default" onclick="equals()">=</button></td>
+        <td><button type="button" class="btn btn-default" onclick="operator(this.innerHTML)">/</button></td>
+      </tr>
+    </table>
+  </form>
+
+  <script type="text/javascript">
+
+    var lastKey = "C";
+
+    function operand(key) {
+      if(isOperand(lastKey))
+        document.calculator.display.value += key;
+      else
+        document.calculator.display.value += " " + key;
+      lastKey = key;
+    }
+
+    function operator(key) {
+      if(isOperator(lastKey)) return;
+      document.calculator.display.value += " " + key;
+      lastKey = key;
+    }
+
+    function empty() {
+      document.calculator.display.value = "";
+      alert("Cleared.");
+      lastKey = key;
+    }
+
+    function equals() {
+      document.calculator.display.value = eval(document.calculator.display.value.replace("x", "*"));
+      lastKey = key;
+    }
+
+    function isOperand(key) {
+      operands = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+      for (var i = 0; i < operands.length; i++) {
+        if(operands[i] == key)
+          return true;
+      };
+      return false;
+    }
+
+    function isOperator(key) {
+      operators = ["+", "-", "x", "/"];
+
+      for (var i = 0; i < operators.length; i++) {
+        if(operators[i] == key)
+          return true;
+      };
+      return false;
+    }
+
+  </script>
+</body>
+</html>
