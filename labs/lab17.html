@@ -1,1 +1,158 @@
-This is a lab.
+<html>
+<head>
+  <title>Lab 17</title>
+
+
+  <link href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.0/readable/bootstrap.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+
+  <style type="text/css">
+
+    body {
+      margin: 7% 30% 10%;
+      font-family: "Lora", monospace;
+      font-size: 18px;
+    }
+
+    .btn {
+      font-family: "Lora", monospace;
+    }
+
+    input.form-control, input.form-control:focus, 
+    textarea.form-control, textarea.form-control:focus,
+    select.form-control, select.form-control:focus {
+      border-width: 2px;
+      box-shadow: none;
+       -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+       -moz-transition: none;
+       -webkit-transition: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <form name="data" role="form" class="form-horizontal">
+
+    <div class="form-group">
+      <label>URL</label>
+      <input type="text" class="form-control" placeholder="http://google.com" name="url">
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-3 checkbox">
+        <label>
+          <input type="checkbox" name="toolbar">
+          Toolbar
+        </label>
+      </div>
+
+      <div class="col-md-3 checkbox">
+        <label>
+          <input type="checkbox" name="location">
+          Location
+        </label>
+      </div>
+
+      <div class="col-md-3 checkbox">
+        <label>
+          <input type="checkbox" name="directories">
+          Directories
+        </label>
+      </div>
+
+      <div class="col-md-3 checkbox">
+        <label>
+          <input type="checkbox" name="status">
+          Status
+        </label>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-3 checkbox">
+        <label>
+          <input type="checkbox" name="menubar">
+          Menubar
+        </label>
+      </div>
+
+      <div class="col-md-3 checkbox">
+        <label>
+          <input type="checkbox" name="scrollbars">
+          Scrollbars
+        </label>
+      </div>
+
+      <div class="col-md-3 checkbox">
+        <label>
+          <input type="checkbox" name="resizable">
+          Resizable
+        </label>
+      </div>
+
+    </div>
+
+    <br>
+
+    <div class="row">
+
+      <div class="col-md-5 form-group" style="width: 50%">
+        <label>Width</label>
+        <input type="text" class="form-control" placeholder="250" name="width">
+      </div>
+
+      <div class="col-md-1"></div>
+
+      <div class="col-md-5 form-group" style="width: 50%">
+        <label>Height</label>
+        <input type="text" class="form-control" placeholder="250" name="height">
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <button type="button" class="btn btn-success" name="submit">Submit</button>
+      <button type="button" class="btn btn-danger" name="reset">Reset</button>
+    </div>
+
+  </form>
+
+  <script type="text/javascript">
+
+    document.data.submit.onclick = function() {
+      url = document.data.url.value;
+
+      params = "width=" + document.data.width.value + ",height=" + document.data.height.value;
+      params += (document.data.toolbar.checked) ? ",toolbar" : "";
+      params += (document.data.location.checked) ? ",location" : "";
+      params += (document.data.directories.checked) ? ",dir" : "";
+      params += (document.data.status.checked) ? ",status" : "";
+      params += (document.data.menubar.checked) ? ",menubar" : "";
+      params += (document.data.scrollbars.checked) ? ",scrollbars" : "";
+      params += (document.data.resizable.checked) ? ",resizable" : "";
+
+      window.open(url, "", params);
+    };
+
+    document.data.reset.onclick = function() {
+
+      elements = document.data.getElementsByTagName("input");
+
+      for (var i = 0; i < elements.length; i++) {
+
+        if(elements[i].type == "text")        
+          elements[i].value = "";
+        if(elements[i].type == "checkbox")    
+          elements[i].checked = elements[i].defaultChecked;
+      };
+    };
+
+  </script>
+
+</body>
+</html>

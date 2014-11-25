@@ -84,8 +84,7 @@
 
     function operand(key) {
       if(lastKey == "=") {
-        empty();
-        document.calculator.display.value += key;
+        document.calculator.display.value = key;
         return;
       }
 
@@ -104,12 +103,12 @@
 
     function empty() {
       document.calculator.display.value = "";
-      lastKey = key;
+      lastKey = "C";
     }
 
     function equals() {
       document.calculator.display.value = eval(document.calculator.display.value.replace("x", "*"));
-      lastKey = key;
+      lastKey = "=";
     }
 
     function isOperand(key) {
