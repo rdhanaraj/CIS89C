@@ -83,6 +83,12 @@
     var lastKey = "C";
 
     function operand(key) {
+      if(lastKey == "=") {
+        empty();
+        document.calculator.display.value += key;
+        return;
+      }
+
       if(isOperand(lastKey))
         document.calculator.display.value += key;
       else
@@ -98,7 +104,6 @@
 
     function empty() {
       document.calculator.display.value = "";
-      alert("Cleared.");
       lastKey = key;
     }
 
