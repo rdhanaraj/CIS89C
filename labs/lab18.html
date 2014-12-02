@@ -1,1 +1,55 @@
-This is a lab.
+<html>
+<head>
+  <title></title>
+
+  <style type="text/css">
+    body {
+      text-align: center;
+      font-family: Georgia, sans-serif;
+      margin: 10% 15% 20px;
+      font-size: 26px;
+      color: white;
+    }
+
+    #jumbotron {
+      background-color: gray;
+      padding: 20px;
+    }
+  </style>
+
+  <script type="text/javascript">
+    messages = ["Welcome to our site!", "Welcome back!", "Look who's back!", "You're still here?!?", "Loyal, you are.", "I knew you'd be back!", "You must be quite curious.", "This is getting creepy.", "Back off, what do you want!", "Oh, it's you again!"];
+
+    window.onload = function() {
+
+      if(document.cookie.length > 0) {
+        visits = parseInt(document.cookie.split("=")[1]) + 1;
+        document.cookie = "visits=" + visits;
+      }
+      else {
+        visits = 1;
+        document.cookie = "visits=" + visits;
+      }
+
+      document.getElementById("message").innerHTML = "You've visited " + visits + " time(s). " + messages[(visits - 1) % 10];
+    };
+
+  </script>
+
+
+</head>
+<body>
+
+  <div id="jumbotron">
+    <span id="message">message</span>
+
+    <br>
+
+    <form name="counterForm">
+      <input type="button" value="Revisit Page" onclick="location.reload();">
+      <input type="button" value="Reset Counter" onclick="document.cookie='visits=0';location.reload();">
+    </form>
+  </div>
+
+</body>
+</html>

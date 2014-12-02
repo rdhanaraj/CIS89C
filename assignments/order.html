@@ -1,0 +1,22 @@
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+  <form name="orderForm">
+    <input type="text" name="first" required>
+    <input type="text" name="last" required>
+    <input type="text" name="address" required>
+    <input type="text" name="city" required>
+    <input type="text" name="state" required>
+    <input type="text" name="zip" pattern="\d{5}" required>
+    <input type="text" name="phone" pattern="(\d{3}) \d{3}-\d{4}" required>
+    <input type="text" name="email" required>
+    <input type="number" name="ccnum" required>
+    <!-- insert select for credit card type -->
+    <input type="text" name="ccexpire" required>
+
+  </form>
+</body>
+</html>

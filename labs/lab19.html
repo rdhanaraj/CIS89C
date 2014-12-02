@@ -1,0 +1,62 @@
+<html>
+<head>
+  <title>Lab 19</title>
+
+  <style type="text/css">
+    body {
+      margin: 10% 15% 20px;
+      color: black;
+      font-family: "Lora", Georgia, sans-serif;
+      font-size: 22px;
+    }
+
+    .left {
+      float: left;
+      width: 30%;
+    }
+
+    .middle {
+      width: 30%;
+      float: left;
+    }
+
+    .right {
+      width: 30%;
+      float: left;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="left">
+
+    <strong>Best Friends</strong> <br><br>
+    <a onmouseover="shift('Best friend for life. Talk to her daily.', 'abi.jpg')" onmouseout="shift('', 'baby.jpg')">Abi Muthu</a><br>
+    <a onmouseover="shift('Hackathon buddy. Helpful & sympathetic.', 'danish.jpg')" onmouseout="shift('', 'baby.jpg')">Danish Shaik</a><br>
+    <a onmouseover="shift('Work partner. Rival & ally.', 'tanay.jpg')" onmouseout="shift('', 'baby.jpg')">Tanay Tandon</a>
+
+  </div>
+
+  <div class="middle">
+    <img>
+  </div>
+
+  <div class="right">
+    <p></p>
+  </div>
+
+  <script type="text/javascript">
+
+    function shift(text, url) {
+      image = document.getElementsByTagName('img')[0];
+      image.src = url;
+      image.style.height = "200px";
+
+      message = document.getElementsByTagName('p')[0];
+      message.innerHTML = text;
+    }
+
+  </script>
+</body>
+</html>
