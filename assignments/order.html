@@ -59,7 +59,9 @@
       elements = document.orderForm.elements;
 
       for (var i = 0; i < elements.length; i++) {
-        if(!elements[i].checkValidity()) {
+
+        // if not valid or if something that is not whitespace
+        if(!elements[i].checkValidity() || !(/\S/.test(elements[i].value)) ) {
           elements[i].focus(); 
           elements[i].select();
 
