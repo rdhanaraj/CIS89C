@@ -137,6 +137,9 @@
       document.getElementById("taxes").value = (total * 0.0825).toFixed(2);
       document.getElementById("totalAfterTaxes").value = (total * 1.0825).toFixed(2);
 
+      document.getElementById("grandTotal").value = (total * 1.0825 + 5).toFixed(2);
+
+
     }
 
     function sub(num) {
@@ -191,12 +194,12 @@
 
       <tr>
         <td>Zip</td>
-        <td><input type="text" name="zip" maxlength="9" required></td>
+        <td><input type="text" name="zip" maxlength="9" placeholder="5 or 9 digits" required></td>
       </tr>
 
       <tr>
         <td>Phone number</td>
-        <td><input type="text" name="phone" pattern="\(\d{3}\) \d{3}-\d{4}" maxlength="14" required></td>
+        <td><input type="text" name="phone" pattern="\(\d{3}\) \d{3}-\d{4}" maxlength="14" placeholder="(xxx) xxx-xxxx" required></td>
       </tr>
 
       <tr>
@@ -206,7 +209,7 @@
 
       <tr>
         <td>Credit Card Number</td>
-        <td><input type="number" name="ccnum" pattern="\d{16}" maxlength="16" required></td>
+        <td><input type="number" name="ccnum" pattern="\d{16}" placeholder="16 digits" maxlength="16" required></td>
       </tr>
 
       <tr>
@@ -222,7 +225,7 @@
 
       <tr>
         <td>Expiration Date</td>
-        <td><input type="text" name="ccexpire" pattern="\d{2}/\d{4}" maxlength="7" required></td>
+        <td><input type="text" name="ccexpire" pattern="\d{2}/\d{4}" placeholder="mm/yyyy" maxlength="7" required></td>
       </tr>
 
       <tr>
@@ -251,7 +254,7 @@
         <td>Interstellar</td>
         <td id="interstellarUnitPrice">$12.75</td>
         <td><input type="number" id="interstellarQuantity" onchange="updateTotalPer('interstellar');"></td>
-        <td><input type="number" id="interstellarPrice" class="subtotal1"></td>
+        <td><input type="number" id="interstellarPrice" class="subtotal1" readonly></td>
       </tr>
 
       <tr>
@@ -259,12 +262,12 @@
         <td>Source Code</td>
         <td id="sourceCodeUnitPrice">$10.50</td>
         <td><input type="number" id="sourceCodeQuantity" onchange="updateTotalPer('sourceCode');"></td>
-        <td><input type="number" id="sourceCodePrice" class="subtotal1"></td>
+        <td><input type="number" id="sourceCodePrice" class="subtotal1" readonly></td>
       </tr>
 
       <tr>
         <td colspan="4"><strong>Subtotal</strong></td>
-        <td><input type="number" id="subtotal1"></td>
+        <td><input type="number" id="subtotal1" readonly></td>
       </tr>
 
       <tr>
@@ -272,7 +275,7 @@
         <td>Kung Fu Panda</td>
         <td id="kungFuPandaUnitPrice">$8.75</td>
         <td><input type="number" id="kungFuPandaQuantity" onchange="updateTotalPer('kungFuPanda');"></td>
-        <td><input type="number" id="kungFuPandaPrice" class="subtotal2"></td>
+        <td><input type="number" id="kungFuPandaPrice" class="subtotal2" readonly></td>
       </tr>
 
       <tr>
@@ -280,12 +283,12 @@
         <td>Big Hero 6</td>
         <td id="bigHero6UnitPrice">$7.50</td>
         <td><input type="number" id="bigHero6Quantity" onchange="updateTotalPer('bigHero6');"></td>
-        <td><input type="number" id="bigHero6Price" class="subtotal2"></td>
+        <td><input type="number" id="bigHero6Price" class="subtotal2" readonly></td>
       </tr>
 
       <tr>
         <td colspan="4"><strong>Subtotal</strong></td>
-        <td><input type="number" id="subtotal2"></td>
+        <td><input type="number" id="subtotal2" readonly></td>
       </tr>
 
       <tr>
@@ -293,7 +296,7 @@
         <td>Dark Knight</td>
         <td id="darkKnightUnitPrice">$11.50</td>
         <td><input type="number" id="darkKnightQuantity" onchange="updateTotalPer('darkKnight');"></td>
-        <td><input type="number" id="darkKnightPrice" class="subtotal3"></td>
+        <td><input type="number" id="darkKnightPrice" class="subtotal3" readonly></td>
       </tr>
 
       <tr>
@@ -301,13 +304,13 @@
         <td>Avengers</td>
         <td id="avengersUnitPrice">$9.75</td>
         <td><input type="number" id="avengersQuantity" onchange="updateTotalPer('avengers');"></td>
-        <td><input type="number" id="avengersPrice" class="subtotal3"></td>
+        <td><input type="number" id="avengersPrice" class="subtotal3" readonly></td>
       </tr>
 
 
       <tr>
         <td colspan="4"><strong>Subtotal</strong></td>
-        <td><input type="number" id="subtotal3"></td>
+        <td><input type="number" id="subtotal3" readonly></td>
       </tr>
 
     </table> 
@@ -319,27 +322,27 @@
 
       <tr>
         <td colspan="4">Total</td>
-        <td><input type="number" id="total"></td>
+        <td><input type="number" id="total" readonly></td>
       </tr>
 
       <tr>
         <td colspan="4">Sales Tax (8.25%)</td>
-        <td><input type="number" id="taxes"></td>
+        <td><input type="number" id="taxes" readonly></td>
       </tr>
 
       <tr>
         <td colspan="4">Total After Taxes</td>
-        <td><input type="number" id="totalAfterTaxes"></td>
+        <td><input type="number" id="totalAfterTaxes" readonly></td>
       </tr>
 
       <tr>
         <td colspan="4">Shipping</td>
-        <td><input type="number"></td>
+        <td><input type="number" value="5.00" readonly></td>
       </tr>
 
       <tr>
         <td colspan="4">Grand Total</td>
-        <td><input type="number"></td>
+        <td><input type="number" id="grandTotal" readonly></td>
       </tr>
 
     </table>
