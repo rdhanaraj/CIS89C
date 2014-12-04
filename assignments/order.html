@@ -1,22 +1,353 @@
 <html>
 <head>
-  <title></title>
+  <title>Order!</title>
+
+  <link href='http://fonts.googleapis.com/css?family=Oxygen+Mono' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="script.js"></script>
+
+  <style type="text/css">
+    input {
+      font-size: 18px;
+      padding: 7px;
+      font-family: "Oxygen Mono";
+
+      border-top-style: none;
+      border-right-style: none;
+      border-bottom-style: thin;
+      border-left-style: none;
+      border-color: #ecf0f1;
+    }
+
+    form {
+      padding-left: 25px;
+    }
+
+    button {
+      font-size: 18px; 
+      font-family: "Oxygen Mono"; 
+      color: white; 
+      border: none; 
+      background-color: #1abc9c; 
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    textarea {
+      border: 2px solid #ecf0f1;
+    }
+
+    #interstellarUnitPrice, #sourceCodeUnitPrice, #kungFuPandaUnitPrice, #bigHero6UnitPrice, #avengersUnitPrice, #darkKnightUnitPrice {
+      width: 100px;
+    }
+
+    #interstellarQuantity, #sourceCodeQuantity, #kungFuPandaQuantity, #bigHero6Quantity, #avengersQuantity, #darkKnightQuantity {
+      width: 150px;
+    }
+
+    #interstellarPrice, #sourceCodePrice, #kungFuPandaPrice, #bigHero6Price, #avengersPrice, #darkKnightPrice, #subtotal1, #subtotal2, #subtotal3 {
+      width: 150px;
+    }
+  </style>
+
+  <script type="text/javascript">
+
+    function isValid() {
+      
+      elements = document.orderForm.elements;
+
+      for (var i = 0; i < elements.length; i++) {
+        if(!elements[i].checkValidity()) {
+          elements[i].focus(); 
+          elements[i].select();
+
+          alert("fix " + elements[i].name.toLowerCase());
+          return false;
+        }
+      };
+
+
+      if(!isValidZipcode()) {
+        document.orderForm.zip.focus();
+        return false;
+      }
+
+      if(!isValidDate()) {
+        document.orderForm.ccexpire.focus();
+        alert("fix date");
+
+        return false;
+      }
+
+      return true;
+    }
+
+    function isValidZipcode() {
+      zip = document.orderForm.zip.value;
+
+      return (/\d{5}/.test(zip) || /\d{9}/.test(zip));
+    }
+
+    function isValidDate() {
+      text = document.orderForm.ccexpire.value;
+
+      expDate = new Date(text.substring(0, 2) + "/" + "1" + "/" +  text.substring(3));
+
+      alert(expDate.toLocaleString());
+      alert(new Date().toLocaleString());
+      alert((expDate - Date.now()) > 0);
+
+      return (expDate - Date.now()) > 0;
+    }
+
+    function updateTotalPer(movie) {
+      quantity = parseInt(document.getElementById(movie + "Quantity").value);
+      unitPrice = parseFloat(document.getElementById(movie + "UnitPrice").innerHTML.substring(1));
+
+      document.getElementById(movie + "Price").value = (quantity * unitPrice).toFixed(2);
+
+      hash = {
+        "interstellar": 1,
+        "sourceCode": 1,
+        "kungFuPanda": 2,
+        "bigHero6": 2,
+        "darkKnight": 3,
+        "avengers": 3
+      };
+
+      updateLinked(hash[movie]);
+    }
+
+    function updateLinked(number) {
+      subtotal = 0;
+
+      elements = document.orderForm.getElementsByTagName("input");
+      for (var i = 0; i < elements.length; i++) {
+        if(elements[i].className == "subtotal" + number && elements[i].value.length > 0) {
+          subtotal += parseFloat(elements[i].value);
+        }
+      };
+
+      document.getElementById("subtotal" + number).value = subtotal.toFixed(2);
+
+      total = sub(1) + sub(2) + sub(3);
+      document.getElementById("total").value = total.toFixed(2);
+      document.getElementById("taxes").value = (total * 0.0825).toFixed(2);
+      document.getElementById("totalAfterTaxes").value = (total * 1.0825).toFixed(2);
+
+    }
+
+    function sub(num) {
+      return (document.getElementById("subtotal" + num).value.length > 0) ? parseFloat(document.getElementById("subtotal" + num).value) : 0;
+    }
+
+  </script>
 </head>
 <body>
 
-  <form name="orderForm">
-    <input type="text" name="first" required>
-    <input type="text" name="last" required>
-    <input type="text" name="address" required>
-    <input type="text" name="city" required>
-    <input type="text" name="state" required>
-    <input type="text" name="zip" pattern="\d{5}" required>
-    <input type="text" name="phone" pattern="(\d{3}) \d{3}-\d{4}" required>
-    <input type="text" name="email" required>
-    <input type="number" name="ccnum" required>
-    <!-- insert select for credit card type -->
-    <input type="text" name="ccexpire" required>
+  <div class="nav">
+    <a href="index.html" id="brand">Rotten Potatoes</a>
 
+    <span class="text-right">
+      <a href="new.html">What's New&nbsp;</a>
+      <a href="order.html">Order</a>&nbsp;
+      <a href="movies.html">Movies</a>&nbsp;
+      <a href="faq.html">FAQ</a>&nbsp;
+      <a href="employment.html">Jobs</a>
+      <a href="contact.html">&nbsp;Contact</a>
+    </span>
+    <hr>
+  </div>
+
+  <form name="orderForm" method="post" action="http://voyager.deanza.edu/~hso/cgi-bin/formgeneric.cgi">
+
+    <table>
+      <tr>
+        <td>First name</td>
+        <td><input type="text" name="first" required></td>
+      </tr>
+
+      <tr>
+        <td>Last name</td>
+        <td><input type="text" name="last" required></td>
+      </tr>
+
+      <tr>
+        <td>Address</td>
+        <td><input type="text" name="address" required></td>
+      </tr>
+
+      <tr>
+        <td>City</td>
+        <td><input type="text" name="city" required></td>
+      </tr>
+
+      <tr>
+        <td>State</td>
+        <td><input type="text" name="state" required></td>
+      </tr>
+
+      <tr>
+        <td>Zip</td>
+        <td><input type="text" name="zip" maxlength="9" required></td>
+      </tr>
+
+      <tr>
+        <td>Phone number</td>
+        <td><input type="text" name="phone" pattern="\(\d{3}\) \d{3}-\d{4}" maxlength="14" required></td>
+      </tr>
+
+      <tr>
+        <td>Email</td>
+        <td><input type="text" name="email" required></td>
+      </tr>
+
+      <tr>
+        <td>Credit Card Number</td>
+        <td><input type="number" name="ccnum" pattern="\d{16}" maxlength="16" required></td>
+      </tr>
+
+      <tr>
+        <td>Credit Card Type</td>
+        <td> <br>
+          <select name="cctype" required>
+            <option value="American Express">American Express</option>
+            <option value="Chase">Chase</option>
+            <option value="Bank of America">Bank of America</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Expiration Date</td>
+        <td><input type="text" name="ccexpire" pattern="\d{2}/\d{4}" maxlength="7" required></td>
+      </tr>
+
+      <tr>
+        <td>Comments</td>
+        <td><br><textarea name="comments" cols="40" rows="6" style="font-family: 'Oxygen Mono'" required></textarea></td>
+      </tr>
+    </table>
+
+    <input name="myemail" type="hidden" value="rishid97@gmail.com">
+
+<br>
+<hr>
+<br>
+    <table>
+
+      <tr>
+        <td><b>Category</b></td>
+        <td><b>Name</b></td>
+        <td><b>Price</b></td>
+        <td><b>Quantity</b></td>
+        <td><b>Total</b></td>
+      </tr>
+
+      <tr>
+        <td>Sci-fi</td>
+        <td>Interstellar</td>
+        <td id="interstellarUnitPrice">$12.75</td>
+        <td><input type="number" id="interstellarQuantity" onchange="updateTotalPer('interstellar');"></td>
+        <td><input type="number" id="interstellarPrice" class="subtotal1"></td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td>Source Code</td>
+        <td id="sourceCodeUnitPrice">$10.50</td>
+        <td><input type="number" id="sourceCodeQuantity" onchange="updateTotalPer('sourceCode');"></td>
+        <td><input type="number" id="sourceCodePrice" class="subtotal1"></td>
+      </tr>
+
+      <tr>
+        <td colspan="4"><strong>Subtotal</strong></td>
+        <td><input type="number" id="subtotal1"></td>
+      </tr>
+
+      <tr>
+        <td>Family</td>
+        <td>Kung Fu Panda</td>
+        <td id="kungFuPandaUnitPrice">$8.75</td>
+        <td><input type="number" id="kungFuPandaQuantity" onchange="updateTotalPer('kungFuPanda');"></td>
+        <td><input type="number" id="kungFuPandaPrice" class="subtotal2"></td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td>Big Hero 6</td>
+        <td id="bigHero6UnitPrice">$7.50</td>
+        <td><input type="number" id="bigHero6Quantity" onchange="updateTotalPer('bigHero6');"></td>
+        <td><input type="number" id="bigHero6Price" class="subtotal2"></td>
+      </tr>
+
+      <tr>
+        <td colspan="4"><strong>Subtotal</strong></td>
+        <td><input type="number" id="subtotal2"></td>
+      </tr>
+
+      <tr>
+        <td>Action</td>
+        <td>Dark Knight</td>
+        <td id="darkKnightUnitPrice">$11.50</td>
+        <td><input type="number" id="darkKnightQuantity" onchange="updateTotalPer('darkKnight');"></td>
+        <td><input type="number" id="darkKnightPrice" class="subtotal3"></td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td>Avengers</td>
+        <td id="avengersUnitPrice">$9.75</td>
+        <td><input type="number" id="avengersQuantity" onchange="updateTotalPer('avengers');"></td>
+        <td><input type="number" id="avengersPrice" class="subtotal3"></td>
+      </tr>
+
+
+      <tr>
+        <td colspan="4"><strong>Subtotal</strong></td>
+        <td><input type="number" id="subtotal3"></td>
+      </tr>
+
+    </table> 
+
+    <br>
+    <hr>
+    <br>
+    <table>
+
+      <tr>
+        <td colspan="4">Total</td>
+        <td><input type="number" id="total"></td>
+      </tr>
+
+      <tr>
+        <td colspan="4">Sales Tax (8.25%)</td>
+        <td><input type="number" id="taxes"></td>
+      </tr>
+
+      <tr>
+        <td colspan="4">Total After Taxes</td>
+        <td><input type="number" id="totalAfterTaxes"></td>
+      </tr>
+
+      <tr>
+        <td colspan="4">Shipping</td>
+        <td><input type="number"></td>
+      </tr>
+
+      <tr>
+        <td colspan="4">Grand Total</td>
+        <td><input type="number"></td>
+      </tr>
+
+    </table>
+
+
+    <center><br>
+      <button type="submit" onclick="return isValid()">Submit</button>
+    </center>
   </form>
 </body>
 </html>

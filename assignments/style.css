@@ -1,7 +1,7 @@
 body, ul, li {
   margin: 0px;
   font-family: "Oxygen Mono", sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   margin: 5% 15% 5%;
 }
 
@@ -83,10 +83,6 @@ table {
 
 .movie-img {
   width: 50px;
-}
-
-tr {
-  height: 100px;
 }
 
 #nig {
