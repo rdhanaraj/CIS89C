@@ -1,0 +1,89 @@
+<html>
+<head>
+  <title>Lab 20</title>
+
+  <style type="text/css">
+    body {
+      margin: 5% 15% 0%;
+      color: white;
+      font-family: Georgia, sans-serif;
+      font-size: 22px;
+    }
+  </style>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+
+  <form name="viewerForm">
+
+    <select name="people" size="5" onchange="switchAll(this)">
+      <option value="0" disabled>Events</option>
+      <option value="1">Presidents</option>
+      <option value="2">Businessmen</option>
+    </select>
+
+    <select name="pictures" size="5" onchange="changeImage(this)">
+      <option disabled>Images</option>
+    </select>
+
+    <hr>
+    <iframe id="imageFrame" width="100%" height="100%" style="border: none;" seamless="seamless"></iframe>
+
+  </form>
+
+  <script type="text/javascript">
+
+    imageNames = [["bush.jpg", "clinton.jpg", "carter.jpg"], ["gates.jpg", "jobs.jpg", "zuck.jpg"]];
+
+    // function to remove all options from pictures
+    function removeAll() {
+      var IE = (document.all && document.getElementById) ? true : false;
+
+      for (i = document.viewerForm.pictures.options.length - 1; i > 0; i--) {
+
+        if (IE) {
+          document.viewerForm.pictures.options.remove(i);
+        } else {
+          document.viewerForm.pictures.options[i] = null;
+        }
+      }
+    }
+    // function to add president options
+    function addPresidents() {
+      presidents = ["", "Bush", "Clinton", "Carter"];
+      for (var i = 1; i < presidents.length; i++) {
+        document.viewerForm.pictures.options[i] = new Option(presidents[i]);
+      };
+    }
+    // function to add businessmen options
+    function addBusinessmen() {
+      businessmen = ["", "Gates", "Jobs", "Zuck"];
+      for (var i = 1; i < businessmen.length; i++) {
+        document.viewerForm.pictures.options[i] = new Option(businessmen[i]);
+      };
+    }
+
+    // function to respond to people select change
+    function switchAll(type) {
+      removeAll();
+
+      if(type.selectedIndex == 1)
+        addPresidents();
+      else
+        addBusinessmen();
+    }
+
+    // function to respond to picture change
+    function changeImage(person) {
+      // grab index of first select
+      var i = document.viewerForm.people.options.selectedIndex;
+      // grab index of second select
+      var j = document.viewerForm.pictures.options.selectedIndex;
+
+      document.getElementById('imageFrame').setAttribute('src', imageNames[i-1][j-1]);
+    }
+
+  </script>
+</body>
+</html>
