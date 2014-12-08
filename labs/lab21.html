@@ -1,0 +1,76 @@
+<html>
+<head>
+  <title>Lab 21</title>
+
+  <style type="text/css">
+    body {
+      margin: 5% 15% 0%;
+      font-family: Georgia, sans-serif;
+      color: white;
+      font-size: 22px;
+    }
+
+    dt {
+      background-color: #1abc9c;
+      padding: 12px;
+    }
+
+    dd {
+      padding: 12px;
+      margin: 3px 0px 3px;
+      background-color: #e67e22;
+    }
+  </style>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body id="main">
+
+  <dl>
+    <dt>What's a hackathon?</dt>
+    <dd class="answer">A hackathon is an event where people get together and develop awesome projects in a short timespan.</dd>
+
+    <dt>I can't stay the whole 12 hours, can I still participate?</dt>
+    <dd class="answer">Of course! We realize that 12 hours is a long time, and that some people might have other commitments. We do strongly encourage you to be present for the initial few hours during the startup demos, and for the final few hours for the presentations and judging.</dd>
+
+    <dt>Who are the judges?</dt>
+    <dd class="answer">We'll be asking the startup representatives to judge the projects, but don't worry — there will be at least one "people's choice" award.</dd>
+
+    <dt>Will there be free food?</dt>
+    <dd class="answer">Yes! There will be a LOT of food!</dd>
+
+
+    <dt>Can high school students participate?</dt>
+    <dd class="answer">Yes! Any Bay Area student is welcome.</dd>
+
+    <dt>What if I don't know how to program?</dt>
+    <dd class="answer">If you come willing to learn and full of ideas there will be people eager to teach you what you need to know and put you to work.</dd>
+
+    <dt>Do I have to bring my own laptop?</dt>
+    <dd class="answer">Yes; unfortunately, we can't provide computers. Please bring anything you'll need to code (though it's fine if you share equipment with a teammate).</dd>
+
+    <dt>How many people can be on my team?</dt>
+    <dd class="answer">Teams can have up to four people in them.</dd>
+  </dl>
+
+  <script type="text/javascript">
+    $('.answer, .question').hide();
+
+    window.onload = function() {
+      $('.question').show();
+    }
+
+    $('dt').click(function() {
+      $(this).next().fadeToggle(1000);
+    });
+
+    $('dd').click(function() {
+      $(this).fadeOut(1000);
+    });
+
+    $('dt,dd').hover(function() {
+      $(this).css("cursor", "pointer");
+    });
+  </script>
+</body>
+</html>

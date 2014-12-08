@@ -16,6 +16,8 @@ if (hours > 18) {
     document.body.style.backgroundColor = "#34495e";
 }
 
+document.body.style.backgroundColor = "#f1c40f"; // ADDED THIS TO KEEP IT A CONSTANT COLOR FOR ADS; NOT FOR REAL THING
+
 document.getElementById("quote").innerHTML = ["Where your treasure is, there will your heart be also.", "Happiness can be found, even in the darkest of times, if one only remembers to turn on the light.", "Nothing like a nighttime stroll to give you ideas.", "To the well-organized mind, death is but the next great adventure."][Math.floor(Math.random() * 4)];
 
 window.setInterval(function() {
@@ -24,6 +26,12 @@ window.setInterval(function() {
     clock.innerHTML = ((hours < 10) ? "0" + hours : hours) + ":" + ((mins < 10) ? "0" + mins : mins) + ":" + ((secs < 10) ? "0" + secs : secs);
     clock.style.textAlign = "center";
     clock.style.fontSize = "50px";
+});
+
+$('img').hover(function() {
+    $(this).css({
+        cursor: 'pointer'
+    });
 });
 
 function calendar() {

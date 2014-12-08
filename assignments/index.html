@@ -6,6 +6,8 @@
   <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
   <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
   <script src="script.js"></script>
 
   <style>
@@ -27,6 +29,15 @@
     th {
       text-align: left;
     }
+
+    .ad {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    button {
+      cursor: pointer;
+    }
   </style>
 
 </head>
@@ -45,7 +56,15 @@
 
     <hr>
 
-    <br><br><br>
+    <div id="message">You last visited</div>
+
+    <br>
+    <div class="ad">
+      <form name="adForm" id="adForm" method="post">
+        <input type="hidden" id="accountNumber">
+        <image id="imageButton">
+      </form>
+    </div>
 
     <div id="clock"></div>
     <div id="greeting" class="hero-unit">
@@ -54,12 +73,13 @@
     <div id="quote" class="text-center" style="margin-bottom: 50px"></div>
 
     <hr><br>
-    <table id="calendar"></table>
+    <!-- <table id="calendar"></table> -->
 
     <br><br>
   </div>
 
   <script src="index.js"></script>
+  <script src="ads.js"></script>
   
 </body>
 </html>
