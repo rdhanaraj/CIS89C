@@ -1,0 +1,165 @@
+<html>
+<head>
+  <title>Final</title>
+
+  <link href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.0/superhero/bootstrap.min.css" rel="stylesheet">
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    body {
+      background-image: url("christmas.jpg");
+      background-size: cover;
+      margin: 0px;
+      color: black;
+    }
+
+    #cover {
+      background-color: black;
+      width: 100%;
+      height: 100%;
+      opacity: 0.8;
+      z-index: -1;
+    }
+
+    #box {
+      background-color: white;
+      margin: 0% 20% 0%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    #countdown {
+      color: #27ae60;
+    }
+
+    h1 {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+
+    h2 {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    hr {
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+    }
+
+    #imageBox {
+      margin: 30px 0px 30px;
+    }
+
+    .fa {
+      color: black;
+      cursor: pointer;
+    }
+
+    img {
+      cursor: pointer;
+    }
+  </style>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body onload="countdown(); setOptions();">
+  <center>
+    <br>
+    <div id="box">
+      <h1 style="color: #e74c3c;">Countdown to Christmas</h1>
+      <h2 id="countdown">00:00:00</h2>
+      <a id="link" href="javascript:loadItem(Math.floor(Math.random() * 5))">Catalog of Specials</a><br>
+
+      <form name="myForm" style="margin: 0; padding: 0; display: inline;">
+        <select name="products"></select>
+      </form>
+      <button style="border: none; padding: 1px 5px 1px; font-size: 12px;" onclick="loadItem(document.myForm.products.selectedIndex)">Go</button>
+
+      <hr><br>
+      <i class="fa fa-arrow-circle-left fa-3x" onclick="rotateLeft();"></i>
+      <span id="imageBox"></span>
+      <i class="fa fa-arrow-circle-right fa-3x" onclick="rotateRight();"></i>
+
+      <h4></h4>
+    </div>
+  </center>
+
+  <script type="text/javascript">
+
+    $('i').hide(); // arrow keys hidden by default
+
+    // array of messages. If added to, the code will automatically accomodate for the element.
+    items = ["Dress", "Books", "Tablet", "Jacket", "Shirt"]; 
+    currentIndex = -1;  // to keep track of last element
+
+    imageCode = ""; // done here instead of html in order to accomodate any number of elements
+    for (var i = 0; i < items.length; i++) {
+      imageCode += "<img src=\"img/" + (i+1) + ".jpg\"width=\"300px\">";
+    };
+
+    $('#imageBox').html(imageCode); // load the images
+    $('img').hide(); // but hide them by default
+    $('img').attr('onclick', 'rotateRight();');
+
+    // based on the description, an index is returned. To make it accomodate any number of elements.
+    function matchDescription(desc) {
+      for (var i = 0; i < items.length; i++) {
+        if(items[i] == desc)
+          return i;
+      };
+    }
+
+    // add options to select dynamically
+    function setOptions() {
+      for (var i = 0; i < items.length; i++) {
+        document.myForm.products.options[i] = new Option(items[i]);
+      };
+    }
+
+    // load an image based on the index. Used with the select, the special catalog, rotation, etc.
+    function loadItem(index) {
+      currentIndex = index;
+
+      $('img').hide();                // hides all images
+      $('img').eq(index).show();      // shows relevant one
+      $('h4').text(items[index]);     // updates message
+      $('i').show();                  // shows the arrows if not already visible
+    }
+
+    function rotateLeft() {
+      loadItem((currentIndex - 1) % items.length); // accounts for wrapping & custom length
+    }
+
+    function rotateRight() {
+      loadItem((currentIndex + 1) % items.length); // accounts for wrapping & custom length
+    }
+
+    // update date evey second
+    function countdown() {
+      window.setInterval(function() {
+        timeLeft = split((new Date('12/25/2014')) - (new Date()));
+
+        // this code adds a zero if necessary. Just for fun (:
+        for (var i = 1; i < timeLeft.length; i++) {
+          if(timeLeft[i] < 10)
+            timeLeft[i] = "0" + timeLeft[i];
+        };
+
+        // update time
+        $('#countdown').text(timeLeft[0] + " days " + timeLeft[1] + ":" + timeLeft[2] + ":" + timeLeft[3]);
+      });
+    }
+
+    // splits milliseconds into relevant units
+    function split(milli) {
+      days = Math.floor(milli / 1000 / 60 / 60 / 24);
+      hours = Math.floor((milli - days * 1000 * 60 * 60 * 24) / 1000 / 60 / 60);
+      minutes = Math.floor((milli - days * 1000 * 60 * 60 * 24 - hours * 1000 * 60 * 60) / 1000 / 60);
+      seconds = Math.floor((milli - days * 1000 * 60 * 60 * 24 - hours * 1000 * 60 * 60 - minutes * 1000 * 60) / 1000);
+
+      return [days, hours, minutes, seconds]; // array of the time left
+    }
+  </script>
+</body>
+</html>
